@@ -1,0 +1,37 @@
+LISP Interaction Layer syntax:
+
+Definitions
+
+a*  := zero or more of a
+a+  := one or more of a
+a   := literally "a"
+<a> := a generic descriptive name
+
+Main syntax forms
+
+Top-level expression
+
+  <operand> <arguments>*
+
+where both <operand> and <arguments> may take the form of a General expression but NOT that of a Top-level expression.
+A Top-level expression may only occur once per program so as to avoid syntactic ambiguity.
+
+General Expression
+
+  (<operand> <arguments>*)
+
+where both <operand> and <arguments> may take the form of a General expression, an Atomic expression, a List Expression or a Vector expression.
+
+List Expression
+
+  '(<elements>*)
+
+<elements> may take whatever syntactic form besides for that of a Top-level expression. In case of no <arguments> being provided, the expression '() will be valid and is called the empty list
+
+Vector Expression
+
+  [<elements>*]
+
+<elements> may take whatever syntactic form besides for that of a Top-level expression. In case of no <arguments> being provided, the expression '() will be valid and is called the empty list
+
+Atomic Expression
