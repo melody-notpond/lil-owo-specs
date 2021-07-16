@@ -4,34 +4,69 @@ Definitions
 
 a*  := zero or more of a
 a+  := one or more of a
+a|b := either a or b, but not both
 a   := literally "a"
 <a> := a generic descriptive name
 
 Main syntax forms
 
-Top-level expression
+Top-level Expression
 
   <operand> <arguments>*
 
-where both <operand> and <arguments> may take the form of a General expression but NOT that of a Top-level expression.
+where both <operand> and <arguments> may take the form of a Application expression but NOT that of a Top-level expression.
 A Top-level expression may only occur once per program so as to avoid syntactic ambiguity.
+
+
 
 General Expression
 
+ <anything>
+
+it is just a shorthand for "any expression that is not a Top-level Expression" (i.e. an Application Expression, an Atomic Expression, a List Expression, a Lambda Expression, a Vector Expression or a Directory Expression.)
+
+
+
+Application Expression
+
   (<operand> <arguments>*)
 
-where both <operand> and <arguments> may take the form of a General expression, an Atomic expression, a List Expression or a Vector expression.
+where <operand> takes the form of a Lambda Expression, a Symbolic Expression, or an Aplication Expression and <arguments> takes the form of a General Expression. 
+
+
 
 List Expression
 
   '(<elements>*)
 
-<elements> may take whatever syntactic form besides for that of a Top-level expression. In case of no <arguments> being provided, the expression '() will be valid and is called the empty list
+<elements> takes the form of a General Expression. In case of no <arguments> being provided, the expression '() will be valid and is called the empty list.
+
+
+
+Lambda Expression
+
+  (lambda <arguments> <body>)|(λ <arguments> <body>) 
+
+where <arguments> must take the form of a List Expression containing only Symbolic Expressions and <body> can take the form of a General Expression.
+
+
 
 Vector Expression
 
   [<elements>*]
 
-<elements> may take whatever syntactic form besides for that of a Top-level expression. In case of no <arguments> being provided, the expression '() will be valid and is called the empty list
+<elements> takes the form of a General Expression. In case of no <arguments> being provided, the expression [] will be valid and is called the empty vector.
+
+
+
+Directory Expression
+
+  /<path>|/
+
+where <path> takes the form of a List Expression.
+
 
 Atomic Expression
+
+  <atom>
+
